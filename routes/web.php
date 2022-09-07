@@ -23,7 +23,6 @@ Route::middleware(['auth'])->group(function () {
 
         Route::resource('/albums', AlbumController::class);
         Route::post('/deleteAlbums', [AlbumController::class, 'destroy'])->name('albums.delete');
-
         Route::delete('/albums/{album}/image/{image}', [AlbumController::class, 'destroyImage'])->name('albums.image.destroy');
         Route::post('/albums/{album}/image', [AlbumController::class,'upload'])->name('albums.upload');
 

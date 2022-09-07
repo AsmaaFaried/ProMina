@@ -36,8 +36,6 @@
               </div>
             </div>
 
-            {{--  End modal  --}}
-
 
             <div class="card text-center">
 
@@ -58,9 +56,9 @@
                 </div>
             @endif
             <br>
-            <div class="card">
+            <div class="card text-center">
 
-                <div class="card-header  text-center">
+                <div class="card-header">
                     All Albums
                 </div>
                 <div class="card-body">
