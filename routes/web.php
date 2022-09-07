@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AlbumController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,28 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/',function(){
+    return view("welcome");
 });
+Route::middleware(['auth'])->group(function () {
+    Route::prefix('/user/')->group(function(){
+
+        Route::resource('/albums', AlbumController::class);
+        Route::post('/deleteAlbums', [AlbumController::class, 'destroy'])->name('albums.delete');
+
+        Route::delete('/albums/{album}/image/{image}', [AlbumController::class, 'destroyImage'])->name('albums.image.destroy');
+        Route::post('/albums/{album}/image', [AlbumController::class,'upload'])->name('albums.upload');
+
+
+
+    });
+
+});
+
+Route::get('/test',function(){
+    return view('Albums.test');
+});
+
+
+Auth::routes();
+
